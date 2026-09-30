@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            min-height: 100vh;
+        }
+
+        .btn {
+            text-align: center;
+            margin: 100px 0 40px;
+        }
+
+        #btn {
+            padding: 20px 35px;
+            font-size: 22px;
+            font-weight: bold;
+            background-color: blanchedalmond;
+            border: none;
+            color: darkred;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .form {
+            background-color: antiquewhite;
+            padding: 30px;
+            width: 600px;
+            margin: auto;
+            display: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form h1 {
+            color: darkred;
+            margin-top: 0;
+        }
+
+        .form input,
+        .form select {
+            padding: 8px 10px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+        }
+
+        .form input:focus,
+        .form select:focus {
+            outline: 2px solid #c33764;
+        }
+
+        .hide {
+            cursor: pointer;
+            height: fit-content;
+            background-color: azure;
+            color: darkblue;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .hide:hover {
+            background-color: lightblue;
+        }
+
+        .send {
+            padding: 10px 25px;
+            background-color: darkred;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .send:hover {
+            background-color: #8b0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="btn">
+        <button onclick="Button()" id="btn">
+            Request A Callback
+        </button>
+    </div>
+
+    <form class="form" action="">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+
+            <h1>Enquiry</h1>
+
+            <button type="button" class="hide" onclick="hide()">
+                Hide
+            </button>
+
+        </div>
+
+        <label>Gender :-</label>
+
+        <input type="radio" name="Gender" value="Male" required>
+        <label>Male</label>
+
+        <input type="radio" name="Gender" value="Female" required>
+        <label>Female</label>
+
+        <br><br>
+
+        <label for="name">Name :-</label>
+        <input type="text" name="Name" id="name"
+            placeholder="Enter Name" required>
+
+        <br><br>
+
+        <label for="contact">Contact No. :-</label>
+        <input type="number" name="contact" id="contact"
+            placeholder="Enter mobile number">
+
+        <br><br>
+
+        <label for="Country">Country :-</label>
+
+        <select name="Country" id="Country">
+            <option value="India">India</option>
+            <option value="Japan">Japan</option>
+            <option value="China">China</option>
+            <option value="Russia">Russia</option>
+        </select>
+
+        <br><br>
+
+        <label for="State">State :-</label>
+
+        <select name="State" id="State">
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Punjab">Punjab</option>
+        </select>
+
+        <br><br>
+
+        <label for="City">City :-</label>
+
+        <select name="City" id="City">
+            <option value="Kota">Kota</option>
+            <option value="Baran">Baran</option>
+            <option value="Bundi">Bundi</option>
+            <option value="Jhalawar">Jhalawar</option>
+        </select>
+
+        <br><br>
+
+        <label for="Address">Address :-</label>
+        <input type="text" name="Address" id="Address"
+            placeholder="Enter Address" required>
+
+        <br><br>
+
+        <label for="Email">Email :-</label>
+        <input type="email" name="Email" id="Email"
+            placeholder="Enter Email" required>
+
+        <br><br>
+
+        <label for="Enquiry">Enquiry :-</label>
+        <input type="text" name="Enquiry" id="Enquiry"
+            placeholder="Enter Any Enquiry" required>
+
+        <br><br>
+
+        <button class="send" type="submit">
+            Send
+        </button>
+
+    </form>
+
+
+    <script>
+
+        const formBtn = document.querySelector(".form")
+
+        function Button() {
+            formBtn.style.display = "block"
+        }
+
+        function hide() {
+            formBtn.style.display = "none"
+        }
+
+    </script>
+
+</body>
+
+</html>

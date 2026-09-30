@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Gallery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            font-family: Arial, sans-serif;
+        }
+
+        .head {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .title h1 {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #cbd5e1;
+            font-size: 16px;
+        }
+
+        .images {
+            display: grid;
+            grid-template-columns: repeat(3, 300px);
+            grid-template-rows: repeat(2, 300px);
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .images img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .images img:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 12px 22px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #0f172a;
+            cursor: pointer;
+            display: none;
+            z-index: 1001;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            background: #e2e8f0;
+        }
+
+        .after {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 85vw !important;
+            height: 85vh !important;
+            transform: translate(-50%, -50%) !important;
+            object-fit: contain !important;
+            border-radius: 12px !important;
+            z-index: 1000;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .after:hover {
+            transform: translate(-50%, -50%) !important;
+        }
+
+        @media (max-width: 1000px) {
+            .images {
+                grid-template-columns: repeat(2, 300px);
+                grid-template-rows: auto;
+            }
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .title h1 {
+                font-size: 30px;
+            }
+
+            .images {
+                grid-template-columns: 1fr;
+            }
+
+            .images img {
+                width: 100%;
+                max-width: 350px;
+                height: 280px;
+                margin: auto;
+            }
+
+            .after {
+                width: 92vw !important;
+                height: 75vh !important;
+            }
+
+            button {
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="head">
+
+        <div class="title">
+            <h1>Interactive Gallery</h1>
+            <p>Click on any image to view it in fullscreen</p>
+        </div>
+
+        <div class="images">
+
+            <img onclick="fullImage(this)"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZrTVZ6po6-qV9hTydVrjYV0XnEbOjoucPioJN6NZIGakK2sWKYEpK898&s=10"
+                alt="">
+
+            <img onclick="fullImage(this)"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShgDC502PnASsQtpBVTAQS3MjH257T6vAP68pdlx43MA&s=10"
+                alt="">
+
+            <img onclick="fullImage(this)"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRofKoVLIKb87_61cDtVL0RTKpl3d9xE5nJ0D77ECtCZg&s=10"
+                alt="">
+
+            <img onclick="fullImage(this)"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmA8LFKTOZElAugt2AeKLm7bSeSRF8DQJoIYyfYXSdRA&s=10"
+                alt="">
+
+            <img onclick="fullImage(this)"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0dqAtFciaB-O34ZfDwELRaymNShGmje2mUWrg7HzPow&s=10"
+                alt="">
+
+            <img onclick="fullImage(this)"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeg_Ts604YZFEj4RAC_z2LEdgK752FmwLaVAT4vWEkJg&s=10"
+                alt="">
+
+        </div>
+
+        <button onclick="HideBtn()">✕ Close</button>
+
+    </div>
+
+
+    <script>
+
+        const images = document.querySelectorAll(".images img")
+        const btn = document.querySelector("button")
+
+
+        function fullImage(img) {
+
+            for (const box of images) {
+                box.setAttribute("class", "")
+            }
+
+            img.setAttribute("class", "after")
+            btn.style.display = "block"
+        }
+
+
+        function HideBtn() {
+
+            for (const box of images) {
+                box.setAttribute("class", "")
+            }
+
+            btn.style.display = "none"
+        }
+
+    </script>
+
+</body>
+
+</html>
